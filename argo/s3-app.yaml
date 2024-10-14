@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: 'https://github.com/7navyasa/ack-demo.git'
-    targetRevision: ack-helm
+    targetRevision: main
     path: ack-helm
   destination:
     server: 'https://kubernetes.default.svc'
