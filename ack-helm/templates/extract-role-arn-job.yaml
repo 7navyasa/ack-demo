@@ -18,11 +18,11 @@ spec:
             - /bin/sh
             - -c
             - |
-              until ROLE_ARN=$(kubectl get roles.iam.services.k8s.aws s3-access-role-2 -o jsonpath='{.status.ackResourceMetadata.arn}' | tr -d '\n' | tr -d '\r'); do
+              until ROLE_ARN=$(kubectl get roles.iam.services.k8s.aws s3-access-role -o jsonpath='{.status.ackResourceMetadata.arn}' | tr -d '\n' | tr -d '\r'); do
                 echo "Waiting for IAM Role ARN..."
                 sleep 5
               done
-              ROLE_ARN=$(kubectl get roles.iam.services.k8s.aws s3-access-role-2 -o jsonpath='{.status.ackResourceMetadata.arn}')
+              ROLE_ARN=$(kubectl get roles.iam.services.k8s.aws s3-access-role -o jsonpath='{.status.ackResourceMetadata.arn}')
               kubectl create secret generic iam-role-arn --from-literal=roleArn=$ROLE_ARN --dry-run=client -o yaml | kubectl apply -f -
               
               cat <<EOF | kubectl apply -f -
