@@ -1,0 +1,3 @@
+s3:
+  enable: true
+  bucketName: ack-bucket-demo
